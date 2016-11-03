@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(shinydashboard)
+library(FinCal)
 ui <- fluidPage(
        headerPanel('Assumptions'),
        
@@ -8,7 +8,9 @@ ui <- fluidPage(
                     min = 0, max = 100),
        sliderInput('B3', 'Tax Rate (%)', 40,
                     min = 0, max = 100),
-       
+       textOutput('NPVo'),
+       textOutput('NPV'),
+       textOutput('irr'),
        h2("Cash Flow Statement"),
        tableOutput('cash'), 
        
@@ -16,7 +18,13 @@ ui <- fluidPage(
        tableOutput('income'),
        
        h2("Balance Sheet"),
-       tableOutput('balance'), 
+       h3("Assets"),
+       tableOutput('balance'),
+       h3("Liabilities"),
+       tableOutput('lia'),
+       h3("Owner's Equity"),
+       tableOutput('OE'),
+       
        
        column(3,
        h3("Startup Phase", style = "color:green"),
@@ -335,6 +343,11 @@ server <- function(input, output) {
        
        NCF <- reactive({c(CFO()+DISP()+PPVEST())})
        
+       #NPV and IRR Calculations
+       
+       output$NPVo <- renderText({npv(input$B2/100,NCF())+input$B5})
+       output$NPV <- renderText({npv(input$B2/100,NCF())})
+       output$irr <- renderText({irr(NCF())})
        
        output$cash <- renderTable({
               cash <- rbind(ni2(),AD(),CAR(),CINV(), CAP(),CWP(),Oth(),CFO(),PPVEST(),DISP(),NCF())
@@ -342,6 +355,98 @@ server <- function(input, output) {
               row.names(cash) <- c("NET INCOME", "ADD DEPRECIATION", "- Change Accts Rec", "- Change Inv", "+ Change in Accts Pay", "+Change in Wage paya", "Other", "Cash from Operations", "PPE Investment", "PPE Disposal","NET CASH FLOW")
               cash <- format(cash,digits=2)
               cash}, rownames = TRUE)
+       
+       #Current Assets: Cash
+       curcash <- reactive({c((-1)*input$B5,
+                              (-1)*input$B5+sum(NCF()[2]),
+                              (-1)*input$B5+sum(NCF()[2:3]),
+                              (-1)*input$B5+sum(NCF()[2:4]),
+                              (-1)*input$B5+sum(NCF()[2:5]),
+                              (-1)*input$B5+sum(NCF()[2:6]),
+                              (-1)*input$B5+sum(NCF()[2:7]),
+                              (-1)*input$B5+sum(NCF()[2:8]),
+                              (-1)*input$B5+sum(NCF()[2:9])
+                              )})
+       
+       #Total Current Assents
+       
+       TCA <- reactive({c(curcash()+(-1)*AR()[2:10]+invdollendyear()[2:10])})
+       
+       #Property Plant and Equipment
+       PPE <-reactive({c(rep(input$B5,8),0)})
+       
+       #Less Accumulated Depreciation
+       
+       LAD <- reactive({c(0,
+                          Book_dep()[1], 
+                          sum(Book_dep()[1:2]), 
+                          sum(Book_dep()[1:3]), 
+                          sum(Book_dep()[1:4]), 
+                          sum(Book_dep()[1:5]),
+                          sum(Book_dep()[1:6]),
+                          sum(Book_dep()[1:7]),
+                          0
+                          )})
+       
+       #Long Term Assets
+       LTA <- reactive({PPE()-LAD()})
+       
+       #Total Assets
+       TA <- reactive({TCA()+LTA()})
+       
+       #Other Liabilities ALERT: Future Variable
+       
+       oth <- rep(0,9)
+       
+       #Total Liabilituies
+       
+       TL <- reactive({c(AP()+WP()+oth)})
+       
+       #Contributed Capital ALERT: Future Variable
+       
+       CC <- rep(0,9)
+       
+       #Retained Earning
+       
+       RE <- reactive({c(sum(ni()[1]),
+                         sum(ni()[1:2]),
+                         sum(ni()[1:3]),
+                         sum(ni()[1:4]),
+                         sum(ni()[1:5]),
+                         sum(ni()[1:6]),
+                         sum(ni()[1:7]),
+                         sum(ni()[1:8]),
+                         sum(ni()[1:9])
+       )})
+       
+       #Total Owner Equity
+       
+       TOE <- reactive({c(CC+RE())})
+       
+       #Total Liabilities and Owner Equity
+       
+       TLOE <- reactive({c(TL()+TOE())})
+       
+       output$balance <- renderTable({
+              balance <- rbind(curcash(),(-1)*AR()[2:10],invdollendyear()[2:10],TCA(),PPE(),LAD(),LTA(),TA(),AP(), WP())
+              colnames(balance) <- c("Start","Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
+              row.names(balance) <- c("CASH","ACC RECEIVABLE", "INVENTORY","Total Current Assets", "PPE", "Less Acc Depr", "Long Term Assets","Total Assets","Acc PAY","Wages Pay")
+              balance <- format(balance,digits=2)
+              balance}, rownames = TRUE)   
+       
+       output$lia <- renderTable({
+              balance <- rbind(AP(), WP(),oth,TL())
+              colnames(balance) <- c("Start","Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
+              row.names(balance) <- c("Acc PAY","Wages Pay", "Other", "Total Liabilities")
+              balance <- format(balance,digits=2)
+              balance}, rownames = TRUE)   
+       
+       output$OE <- renderTable({
+              balance <- rbind(CC,RE(),TOE(),TLOE())
+              colnames(balance) <- c("Start","Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
+              row.names(balance) <- c("CONTRIBUTED CAPITAL","RETAINED EARNINGS", "TOTAL OWNER'S EQUITY", "TOTAL LIA and OE")
+              balance <- format(balance,digits=2)
+              balance}, rownames = TRUE)   
        
        bal_0 <- reactive({c((-1)*input$B5,
                             input$B25*Revenue()[1],
@@ -363,14 +468,6 @@ server <- function(input, output) {
                             (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1]+input$B5-sum(Book_dep()[1])
        )})
        
-
-       
-                            output$balance <- renderTable({
-                                   balance <- cbind(bal_0(),bal_1())
-                                   colnames(balance) <- c("Year 1","Year 2")
-                                   row.names(balance) <- c("CASH", "ACC REC","INVENTORY", "CURRENT ASSENTS", "PPE", "ACC DEPRECIATION", "LONG TERM ASSETS", "TOTAL ASSETS")
-                                   balance <- format(balance,digits=2)
-                                   balance}, rownames = TRUE)       
 
 }
 
