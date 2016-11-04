@@ -1,54 +1,37 @@
 library(shiny)
 library(shinydashboard)
 library(FinCal)
+library(ggplot2)
+library(plotly)
 
 ui <- dashboardPage(
        dashboardHeader(title = "My Business Dash"),
        dashboardSidebar(
-              sliderInput('B2', 'Discount Rate (%)', 6,
-                          min = 0, max = 100),
-              sliderInput('B3', 'Tax Rate (%)', 40,
-                          min = 0, max = 100),
               sidebarMenu(
                      menuItem("Dashboard", tabName = "dashboard"),
-                     menuItem("Cash Flow Statement", tabName = "CF"),
-                     menuItem("Income Statement", tabName = "INC"),
-                     menuItem("Balance Sheet", tabName = "BAL")
+                     menuItem("Plots", tabName = "plots")
+                     
               )
+                     
+
        ),
        dashboardBody(
               tabItems(
                      tabItem("dashboard",
-                             fluidRow(titlePanel(h2("Inputs", style = "color:#3c8dbc")),
-                                      tabsetPanel(type = "tabs", 
-                                                  tabPanel(h4("Startup", style = "color:green"), h3("Startup Phase", style = "color:green"),
+                             fluidRow(titlePanel(h2("My Business Dash - By Ryan Tillis", style = "color:#3c8dbc")),
+                                      tabsetPanel(type = "tabs",
+                                                  tabPanel(h4(strong("Startup"), style = "color:green"), 
                                                            column(4,
+                                                                  h3("Startup Phase", style = "color:green"),
                                                                   numericInput('B5', 'PPE - Inital Investment ($)', 70000),
                                                                   numericInput('B6', 'PPE - Residual Value ($)', 0),
                                                                   numericInput('B7', 'PPE - Useful Life (years)', 7,
                                                                                min = 1),
                                                                   numericInput('B9', 'R&D - Startup Phase [yearly] ($)', 20000)
                                                            ),
-                                                                  
-                                                           column(5, h4("Tax Depreciation by Year"),
-                                                                  column(5,
-                                                                         numericInput('E44','1',.29),
-                                                                         numericInput('F44','2',.2),
-                                                                         numericInput('G44','3',.15),
-                                                                         numericInput('H44','4',.1)
-                                                                  ),
-                                                                  column(5,     
-                                                                         numericInput('I44','5',.08),
-                                                                         numericInput('J44','6',.06),
-                                                                         numericInput('K44','7',.05),
-                                                                         numericInput('L44','8',0)
-                                                                  )
-                                                                  )
-                                                                  
-                                                           
-                                                           
-                                                           ), 
-                                                  tabPanel(h4("Operation", style = "color:#cccc00"),
+                                                           box(plotOutput("plot1"))
+                                                           ),
+                                                  tabPanel(h4(strong("Operation"), style = "color:#cccc00"),
                                                            
                                                            column(4,
                                                            h3("Operating Phase - Sales", style = "color:#cccc00"),
@@ -82,7 +65,8 @@ ui <- dashboardPage(
                                                                        max = 100)
                                                            )
                                                            ), 
-                                                  tabPanel(h4("Shutdown", style = "color:red"), 
+                                                  tabPanel(h4(strong("Shutdown"), style = "color:red"),
+                                                           column(6,
                                                            h3("Termination/Project Shutdown", style = "color:red"),
                                                            numericInput('B37', 'PPE - Proceeds from Disposal of PPE', 5000, min=0),
                                                            numericInput('B38', 'Disposal or Cleanup costs', 2000, min=0),
@@ -93,16 +77,55 @@ ui <- dashboardPage(
                                                            sliderInput('B41', 'Variable SG&A', 0, min=0,
                                                                        max = 100)
                                                            )
+                                                           ),
+                                                  tabPanel(h4("Taxes & Rates", style = "color:grey"), 
+                                                           column(10, 
+                                                                  h3("Taxes and Rates"),
+                                                                  
+                                                           sliderInput('B2', 'Discount Rate (%)', 6,
+                                                                                min = 0, max = 100),
+                                                                  sliderInput('B3', 'Tax Rate (%)', 40,
+                                                                              min = 0, max = 100),
+                                                                  
+                                                           
+                                                           h5(strong("\  Yearly Depreciation")),
+                                                           column(4, 
+                                                                  sliderInput('E44','1',.29, min = 0, max = 1),
+                                                                  sliderInput('F44','2',.2, min = 0, max = 1),
+                                                                  sliderInput('G44','3',.15, min = 0, max = 1),
+                                                                  sliderInput('H44','4',.1, min = 0, max = 1)
+                                                           ),
+                                                           column(4,
+                                                                  sliderInput('I44','5',.08, min = 0, max = 1),
+                                                                  sliderInput('J44','6',.06, min = 0, max = 1),
+                                                                  sliderInput('K44','7',.05, min = 0, max = 1),
+                                                                  sliderInput('L44','8',0, min = 0, max = 1)
+                                                           )
+                                                           )
+                                                  )
+                                                  
                                       )
                                       ),
-                             fluidRow(titlePanel("Statements"),
+                             fluidRow(titlePanel(strong("Statements")),
                                           tabsetPanel(type = "tabs", 
-                                          tabPanel("Cash Flow Statement", tableOutput('cash')), 
-                                          tabPanel("Income Statement", tableOutput('income')), 
-                                          tabPanel("Balance Sheet", tableOutput('balance'), tableOutput('lia'),tableOutput('OE'))
+                                          tabPanel(strong("Cash Flow Statement"),h4("Cash Flow Statement"), tableOutput('cash')), 
+                                          tabPanel(strong("Income Statement"),h4("Income Statement"), tableOutput('income')), 
+                                          tabPanel(strong("Balance Sheet"),h4("Assets"),
+                                                   tableOutput('balance'),
+                                                   h4("Liabilities"),
+                                                   tableOutput('lia'),
+                                                   h4("Owner Equity"),
+                                                   tableOutput('OE'))
                              )
                              )
                      )
+                     
+                     #tabItem("plots",
+                             #fluidRow(
+                                    #plotOutput("plot1")
+                                    
+                             #)
+                             #)
               )
        )
 )
@@ -474,7 +497,7 @@ server <- server <- function(input, output) {
        output$lia <- renderTable({
               balance <- rbind(AP(), WP(),oth,TL())
               colnames(balance) <- c("Start","Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
-              row.names(balance) <- c("Acc PAY","Wages Pay", "Other", "Total Liabilities")
+              row.names(balance) <- c("Accounts Payable","Wages Payables", "Other", "Total Liabilities")
               balance <- format(balance,digits=2)
               balance}, rownames = TRUE)   
        
@@ -483,27 +506,13 @@ server <- server <- function(input, output) {
               colnames(balance) <- c("Start","Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
               row.names(balance) <- c("Contributed Capital","Retained Earnings", "Total owner Equity", "Liability + OE")
               balance <- format(balance,digits=2)
-              balance}, rownames = TRUE)   
+              balance}, rownames = TRUE)
        
-       bal_0 <- reactive({c((-1)*input$B5,
-                            input$B25*Revenue()[1],
-                            invdollendyear()[1],
-                            (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1],
-                            input$B5,
-                            0,
-                            input$B5,
-                            (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1]+input$B5
-       )})
-       
-       bal_1 <- reactive({c((-1)*input$B5,
-                            input$B25*Revenue()[2],
-                            invdollendyear()[2],
-                            (-1)*input$B5-input$B25*Revenue()[2]-invdollendyear()[2],
-                            input$B5,
-                            (-1)*sum(Book_dep()[1]),
-                            input$B5-sum(Book_dep()[1]),
-                            (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1]+input$B5-sum(Book_dep()[1])
-       )})
+       output$plot1 <- renderPlot({
+              df <- data.frame(NCF(),c(1,2,3,4,5,6,7,8,9))
+              names(df) <- c("Net Cash Flow", "Year")
+              qplot(df[,2],df[,1], main = "Net Cash Flow", xlab = "Year", ylab = "Cash")
+       })
        
        
 }
