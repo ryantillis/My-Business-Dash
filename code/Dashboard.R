@@ -1,6 +1,5 @@
 library(shiny)
 library(shinydashboard)
-library(FinCal)
 library(ggplot2)
 library(plotly)
 
@@ -8,8 +7,11 @@ ui <- dashboardPage(
        dashboardHeader(title = "My Business Dash"),
        dashboardSidebar(
               sidebarMenu(
-                     menuItem("Dashboard", tabName = "dashboard"),
-                     menuItem("Plots", tabName = "plots")
+                     menuItem("Project One", tabName = "dashboard"),
+                     menuItem("Project Two", tabName = "plots"),
+                     valueBoxOutput('irr', width = 12),
+                     valueBoxOutput('NPV', width = 12),
+                     valueBoxOutput('NPVo', width = 12)
                      
               )
                      
@@ -18,7 +20,7 @@ ui <- dashboardPage(
        dashboardBody(
               tabItems(
                      tabItem("dashboard",
-                             fluidRow(titlePanel(h2("My Business Dash - By Ryan Tillis", style = "color:#3c8dbc")),
+                             fluidRow(titlePanel(h2("Scenario Testing Dashboard - By Ryan Tillis", style = "color:#3c8dbc")),
                                       tabsetPanel(type = "tabs",
                                                   tabPanel(h4(strong("Startup"), style = "color:green"), 
                                                            column(4,
@@ -118,14 +120,12 @@ ui <- dashboardPage(
                                                    tableOutput('OE'))
                              )
                              )
-                     )
+                     ),
                      
-                     #tabItem("plots",
-                             #fluidRow(
-                                    #plotOutput("plot1")
+                     tabItem("plots",titlePanel(h4("Plenty of Room for Additional Project Evaluations...")
                                     
-                             #)
-                             #)
+                             )
+                             )
               )
        )
 )
@@ -382,33 +382,44 @@ server <- server <- function(input, output) {
        
        #NPV and IRR Calculations
        
-       npvo <- reactive({npv(input$B2/100,NCF())+input$B5})
+       npv <- function(rate, values) {sum(values / (1 + rate)^seq_along(values))}
        
-       output$NPVo <- renderValueBox({
-              valueBox(npvo(),
-                     "NPV of Future Cash Flows"
-              )
-       })
+       irr <- function(x, start=0.1) {
+              t <- seq_along(x)-1
+              f <- function(i) abs(sum(x/(1+i)^t))
+              return(nlm(f,start)$estimate)
+       }
        
-       npv <- reactive({npv(input$B2/100,NCF())})
+              #### NPV AND IRR VALUE BOXES
+              npvo2 <- reactive({format(npv(input$B2/100,NCF())+input$B5, digits = 7)})
+              
+              output$NPVo <- renderValueBox({
+                     valueBox(npvo2(),
+                            h2("NPV"),
+                            color = "blue"
+                     )
+              })
+              
+              npv2 <- reactive({format(npv(input$B2/100,NCF()),digits = 7)})
+              
+              output$NPV <- renderValueBox({
        
-       output$NPV <- renderValueBox({
-
-              valueBox(npv(),
-                       "NPV with Initial Investment"
-              )
-
-       })
- 
-       irr <- reactive({irr(NCF())})
+                     valueBox(npv2(),
+                              h2("NPV - PPE"),
+                              color="blue"
+                     )
        
-       output$irr <- renderValueBox({
-
-              valueBox(irr(),
-                     "IRR"
-              )
-       })
-       
+              })
+        
+              irr2 <- reactive({format(irr(NCF()),digits=3)})
+              
+              output$irr <- renderValueBox({
+                     valueBox(irr2(),
+                            h2("IRR"),
+                            color = "blue"
+                     )
+              })
+              
        output$cash <- renderTable({
               cash <- rbind(ni2(),AD(),CAR(),CINV(), CAP(),CWP(),Oth(),CFO(),PPVEST(),DISP(),NCF())
               colnames(cash) <- c("Start", "Year 1","Year 2","Year 3","Year 4","Year 5","Year 6","Year 7","Year 8")
@@ -509,9 +520,10 @@ server <- server <- function(input, output) {
               balance}, rownames = TRUE)
        
        output$plot1 <- renderPlot({
-              df <- data.frame(NCF(),c(1,2,3,4,5,6,7,8,9))
+              df <- data.frame(NCF(),c(1,2,3,4,5,6,7,8,9), c(rep("Start",2),rep("Operational",6),"Shutdown"))
               names(df) <- c("Net Cash Flow", "Year")
-              qplot(df[,2],df[,1], main = "Net Cash Flow", xlab = "Year", ylab = "Cash")
+              gg <- ggplot(df, aes(x = df[,2], y = df[,1], col = df[,3]))+geom_point()+labs(title = "Net Cash Flow", x = "Year", y = "Cash")+geom_hline(yintercept = 0, size = 1, color = "red")+ scale_colour_manual(values = c("#cccc00","red", "green"))+ labs(col='Phases')
+              gg
        })
        
        
