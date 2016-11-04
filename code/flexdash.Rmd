@@ -1,3 +1,16 @@
+---
+title: "My Business Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r b, echo =FALSE}
 library(shiny)
 library(shinyjs)
 library(FinCal)
@@ -491,3 +504,39 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Dashboard
+
+```{r}
+ui2 <- fluidPage(
+       h2("Cash Flow Statement"),
+       tableOutput('cash')
+)
+
+shinyApp(ui = ui2, server = server)
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Cash Flow Statement
+
+```{r}
+
+```
+
+### Income Statement
+
+```{r}
+
+```
+
+### Balance Statment
+
+```{r}
+
+```

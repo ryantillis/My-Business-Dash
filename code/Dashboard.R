@@ -1,106 +1,113 @@
 library(shiny)
-library(shinyjs)
+library(shinydashboard)
 library(FinCal)
-ui <- fluidPage(
-       headerPanel('Assumptions'),
-       
-       column(4,
-       sliderInput('B2', 'Discount Rate (%)', 6,
-                    min = 0, max = 100),
-       sliderInput('B3', 'Tax Rate (%)', 40,
-                    min = 0, max = 100)
-       ),
-       
-       column(4,
-       h2(textOutput('NPVo')),
-       h2(textOutput('NPV')),
-       h2(textOutput('irr'))
-       ),
-       
-       
-       h2("Cash Flow Statement"),
-       tableOutput('cash'), 
-       
-       h2("Income Statement"),
-       tableOutput('income'),
-       
-       h2("Balance Sheet"),
-       h3("Assets"),
-       tableOutput('balance'),
-       h3("Liabilities"),
-       tableOutput('lia'),
-       h3("Owner's Equity"),
-       tableOutput('OE'),
-       
-       
-       column(3,
-       h3("Startup Phase", style = "color:green"),
-       numericInput('B5', 'Inital Investment in PPE ($)', 70000),
-       numericInput('B6', 'Residual Value for Depreciation Purposes ($)', 0),
-       numericInput('B7', 'Useful Life in Years', 7,
-                    min = 1),
-       numericInput('B9', 'R&D per year During Startup Phase ($)', 20000),
-              column(5, numericInput('E44','1',.29),
-                     numericInput('F44','2',.2),
-                     numericInput('G44','3',.15),
-                     numericInput('H44','4',.1),
-                     numericInput('I44','5',.08),
-                     numericInput('J44','6',.06),
-                     numericInput('K44','7',.05)
-                     )
-       
-       ),
-       
 
-       
-       column(3,
-              h3("Operating Phase - Sales", style = "color:#cccc00"),
-              numericInput('B12', 'Inital Sales Volume (units)', 2000),
-              sliderInput('B13', 'Sales Growth per Year (%)', 0, min=0, max=100),
-              numericInput('B15', 'Sales Price Per Unit($)', 100,
-                           min = 0),
-              sliderInput('B16', 'Product Gross margin Pct (%)', 55, min=0,
-                           max = 100),
-              sliderInput('B17', 'Inflation Rate for Sales & COGS (%)', 0, min=0,
-                          max = 100),
-              numericInput('B19', 'SG & A - Fixed costs per year ($) (starts in year 1)', 25000,
-                           min = 0),
-              numericInput('B20', 'SG & A - Variable Costs ($) (starts year 3)', 15,
-                           min = 0)
-              
+ui <- dashboardPage(
+       dashboardHeader(title = "My Business Dash"),
+       dashboardSidebar(
+              sliderInput('B2', 'Discount Rate (%)', 6,
+                          min = 0, max = 100),
+              sliderInput('B3', 'Tax Rate (%)', 40,
+                          min = 0, max = 100),
+              sidebarMenu(
+                     menuItem("Dashboard", tabName = "dashboard"),
+                     menuItem("Cash Flow Statement", tabName = "CF"),
+                     menuItem("Income Statement", tabName = "INC"),
+                     menuItem("Balance Sheet", tabName = "BAL")
+              )
        ),
-       
-       column(3,
-              h3("Working Capital - Timing Issues", style = "color:#cccc00"),
-              sliderInput('B24', 'Collections in Year of Sale (%)', 90, min=0, max=100),
-              sliderInput('B25', 'Collections Following Year (%)', 10, min=0, max=100),
-              sliderInput('B27', 'Units of Inventory as Percent yearly sales', 10,
-                           min = 0,100),
-              sliderInput('B30', 'Percent Suppliers Paid This Year (%)', 95, min=0,
-                          max = 100),
-              sliderInput('B31', 'Percent Suppliers Paid next year (%)', 5, min=0,
-                          max = 100),
-              sliderInput('B33', 'Percent Employees Paid This Year (%)', 70, min=0,
-                          max = 100),
-              sliderInput('B34', 'Percent Employees Paid next year (%)', 30, min=0,
-                          max = 100)
-              
-       ),
-       
-       column(3,
-              h3("Termination/Project Shutdown", style = "color:red"),
-              numericInput('B37', 'Proceeds from Disposal of PPE', 5000, min=0),
-              numericInput('B38', 'Disposal or Cleanup costs', 2000, min=0),
-              sliderInput('B39', 'Markup Over Cost for Sale of Ending Inventory (%)', 0, min=0,
-                          max = 100),
-              sliderInput('B40', 'Fixed SG&A', 0, min=0,
-                          max = 100),
-              sliderInput('B41', 'Variable SG&A', 0, min=0,
-                          max = 100)
+       dashboardBody(
+              tabItems(
+                     tabItem("dashboard",
+                             fluidRow(titlePanel(h2("Inputs", style = "color:#3c8dbc")),
+                                      tabsetPanel(type = "tabs", 
+                                                  tabPanel(h4("Startup", style = "color:green"), h3("Startup Phase", style = "color:green"),
+                                                           column(4,
+                                                                  numericInput('B5', 'PPE - Inital Investment ($)', 70000),
+                                                                  numericInput('B6', 'PPE - Residual Value ($)', 0),
+                                                                  numericInput('B7', 'PPE - Useful Life (years)', 7,
+                                                                               min = 1),
+                                                                  numericInput('B9', 'R&D - Startup Phase [yearly] ($)', 20000)
+                                                           ),
+                                                                  
+                                                           column(5, h4("Tax Depreciation by Year"),
+                                                                  column(5,
+                                                                         numericInput('E44','1',.29),
+                                                                         numericInput('F44','2',.2),
+                                                                         numericInput('G44','3',.15),
+                                                                         numericInput('H44','4',.1)
+                                                                  ),
+                                                                  column(5,     
+                                                                         numericInput('I44','5',.08),
+                                                                         numericInput('J44','6',.06),
+                                                                         numericInput('K44','7',.05),
+                                                                         numericInput('L44','8',0)
+                                                                  )
+                                                                  )
+                                                                  
+                                                           
+                                                           
+                                                           ), 
+                                                  tabPanel(h4("Operation", style = "color:#cccc00"),
+                                                           
+                                                           column(4,
+                                                           h3("Operating Phase - Sales", style = "color:#cccc00"),
+                                                           numericInput('B12', 'Inital Sales Volume (units)', 2000),
+                                                           sliderInput('B13', 'Annual Growth (%)', 0, min=0, max=100),
+                                                           numericInput('B15', 'Sales Price Per Unit ($)', 100,
+                                                                        min = 0),
+                                                           sliderInput('B16', 'Gross margin (%)', 55, min=0,
+                                                                       max = 100),
+                                                           sliderInput('B17', 'Inflation Rate (%)', 0, min=0,
+                                                                       max = 100),
+                                                           numericInput('B19', 'SG & A - Fixed ($)', 25000,
+                                                                        min = 0),
+                                                           numericInput('B20', 'SG & A - Variable ($)', 15,
+                                                                        min = 0)
+                                                           ),
+                                                           
+                                                           column(6,
+                                                           h3("Working Capital - Timing Issues", style = "color:#cccc00"),
+                                                           sliderInput('B24', 'Collections in Year of Sale (%)', 90, min=0, max=100),
+                                                           sliderInput('B25', 'Collections Following Year (%)', 10, min=0, max=100),
+                                                           sliderInput('B27', 'Units of Inventory as Percent yearly sales', 10,
+                                                                       min = 0,100),
+                                                           sliderInput('B30', 'Percent Suppliers Paid This Year (%)', 95, min=0,
+                                                                       max = 100),
+                                                           sliderInput('B31', 'Percent Suppliers Paid next year (%)', 5, min=0,
+                                                                       max = 100),
+                                                           sliderInput('B33', 'Percent Employees Paid This Year (%)', 70, min=0,
+                                                                       max = 100),
+                                                           sliderInput('B34', 'Percent Employees Paid next year (%)', 30, min=0,
+                                                                       max = 100)
+                                                           )
+                                                           ), 
+                                                  tabPanel(h4("Shutdown", style = "color:red"), 
+                                                           h3("Termination/Project Shutdown", style = "color:red"),
+                                                           numericInput('B37', 'PPE - Proceeds from Disposal of PPE', 5000, min=0),
+                                                           numericInput('B38', 'Disposal or Cleanup costs', 2000, min=0),
+                                                           #sliderInput('B39', 'Markup Over Cost for Sale of Ending Inventory (%)', 0, min=0,
+                                                                       #max = 100),
+                                                           sliderInput('B40', 'Fixed SG&A', 0, min=0,
+                                                                       max = 100),
+                                                           sliderInput('B41', 'Variable SG&A', 0, min=0,
+                                                                       max = 100)
+                                                           )
+                                      )
+                                      ),
+                             fluidRow(titlePanel("Statements"),
+                                          tabsetPanel(type = "tabs", 
+                                          tabPanel("Cash Flow Statement", tableOutput('cash')), 
+                                          tabPanel("Income Statement", tableOutput('income')), 
+                                          tabPanel("Balance Sheet", tableOutput('balance'), tableOutput('lia'),tableOutput('OE'))
+                             )
+                             )
+                     )
+              )
        )
 )
 
-server <- function(input, output) {
+server <- server <- function(input, output) {
        
        #Book Depreciation per Year
        Book_dep <- reactive({c(rep((input$B5-input$B6)/input$B7,7), 0)})
@@ -238,8 +245,8 @@ server <- function(input, output) {
                        input$B19+input$B20*sales_vol()[6],
                        input$B19+input$B20*sales_vol()[7],
                        input$B40+input$B41*sales_vol()[8])
-              })
-
+       })
+       
        #Long Term Assets, initial PPE investment less depreciation
        
        LTA <- reactive({c(input$B5,input$B5-Book_dep())})
@@ -253,7 +260,7 @@ server <- function(input, output) {
        
        #Tax Benefit
        te <- reactive({c(input$B3/100*(gm()-(Tax_dep()+rd()+sga()+ol())))})
-
+       
        #Net Income
        ni <- reactive({c(pti()-te())})
        ni2 <-reactive({c(0,ni())})
@@ -293,14 +300,14 @@ server <- function(input, output) {
        IDEY <- reactive({invdolendyear})
        
        CINV <- reactive({(-1)*c(0,
-                           invdollendyear()[3]-invdolbeg()[1],
-                           invdollendyear()[4]-invdolbeg()[2],
-                           invdollendyear()[5]-invdolbeg()[3],
-                           invdollendyear()[6]-invdolbeg()[4],
-                           invdollendyear()[7]-invdolbeg()[5],
-                           invdollendyear()[8]-invdolbeg()[6],
-                           invdollendyear()[9]-invdolbeg()[7],
-                           invdollendyear()[10]-invdolbeg()[8])})
+                                invdollendyear()[3]-invdolbeg()[1],
+                                invdollendyear()[4]-invdolbeg()[2],
+                                invdollendyear()[5]-invdolbeg()[3],
+                                invdollendyear()[6]-invdolbeg()[4],
+                                invdollendyear()[7]-invdolbeg()[5],
+                                invdollendyear()[8]-invdolbeg()[6],
+                                invdollendyear()[9]-invdolbeg()[7],
+                                invdollendyear()[10]-invdolbeg()[8])})
        
        #Accounts Payable
        
@@ -352,21 +359,32 @@ server <- function(input, output) {
        
        #NPV and IRR Calculations
        
-       output$NPVo <- renderText({
-              npvo <- format(npv(input$B2/100,NCF())+input$B5, digits = 2)
-              text <- paste("NPV of Future Cash Flows:", as.character(npvo))
-              text
-              })
-       output$NPV <- renderText({
-              npvo <- format(npv(input$B2/100,NCF()), digits = 2)
-              text <- paste("NPV incl/ Initial Investment:", as.character(npvo))
-              text
+       npvo <- reactive({npv(input$B2/100,NCF())+input$B5})
+       
+       output$NPVo <- renderValueBox({
+              valueBox(npvo(),
+                     "NPV of Future Cash Flows"
+              )
        })
        
-       output$irr <- renderText({
-              irr <- format(irr(NCF()), digits = 2)
-              text <- paste("IRR", as.character(irr))    
-                            })
+       npv <- reactive({npv(input$B2/100,NCF())})
+       
+       output$NPV <- renderValueBox({
+
+              valueBox(npv(),
+                       "NPV with Initial Investment"
+              )
+
+       })
+ 
+       irr <- reactive({irr(NCF())})
+       
+       output$irr <- renderValueBox({
+
+              valueBox(irr(),
+                     "IRR"
+              )
+       })
        
        output$cash <- renderTable({
               cash <- rbind(ni2(),AD(),CAR(),CINV(), CAP(),CWP(),Oth(),CFO(),PPVEST(),DISP(),NCF())
@@ -385,7 +403,7 @@ server <- function(input, output) {
                               (-1)*input$B5+sum(NCF()[2:7]),
                               (-1)*input$B5+sum(NCF()[2:8]),
                               (-1)*input$B5+sum(NCF()[2:9])
-                              )})
+       )})
        
        #Total Current Assents
        
@@ -405,7 +423,7 @@ server <- function(input, output) {
                           sum(Book_dep()[1:6]),
                           sum(Book_dep()[1:7]),
                           0
-                          )})
+       )})
        
        #Long Term Assets
        LTA <- reactive({PPE()-LAD()})
@@ -475,8 +493,8 @@ server <- function(input, output) {
                             0,
                             input$B5,
                             (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1]+input$B5
-                            )})
-
+       )})
+       
        bal_1 <- reactive({c((-1)*input$B5,
                             input$B25*Revenue()[2],
                             invdollendyear()[2],
@@ -487,7 +505,7 @@ server <- function(input, output) {
                             (-1)*input$B5-input$B25*Revenue()[1]-invdollendyear()[1]+input$B5-sum(Book_dep()[1])
        )})
        
-
+       
 }
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)
