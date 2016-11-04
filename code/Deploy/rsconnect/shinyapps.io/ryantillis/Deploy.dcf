@@ -1,0 +1,11 @@
+name: Deploy
+title:
+account: ryantillis
+server: shinyapps.io
+appId: 135793
+bundleId: 605936
+url: https://ryantillis.shinyapps.io/Deploy/
+when: 1478284363.52413
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: www/index.html

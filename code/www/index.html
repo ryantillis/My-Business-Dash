@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1504">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;<span class="Apple-converted-space">  </span>&lt;script type="application/shiny-singletons"&gt;&lt;/script&gt;<span class="Apple-converted-space">  </span>&lt;script type="application/html-dependencies"&gt;json2[2014.02.04];jquery[1.12.4];babel-polyfill[6.7.2];shiny[0.14.2];font-awesome[4.6.3];ionrangeslider[2.1.2];strftime[0.9.2];bootstrap[3.3.7];AdminLTE[2.0.6];shinydashboard[0.5.3]&lt;/script&gt;&lt;script src="shared/json2-min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="shared/jquery.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="shared/babel-polyfill.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;link href="shared/shiny.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;script src="shared/shiny.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;link href="shared/font-awesome/css/font-awesome.min.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;link href="shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="shared/strftime/strftime-min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1">&lt;link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;script src="shared/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="shared/bootstrap/shim/html5shiv.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="shared/bootstrap/shim/respond.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;link href="AdminLTE-2.0.6/AdminLTE.min.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;link href="AdminLTE-2.0.6/_all-skins.min.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;script src="AdminLTE-2.0.6/app.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;link href="shinydashboard-0.5.3/shinydashboard.css" rel="stylesheet" /&gt;</p>
+<p class="p1">&lt;script src="shinydashboard-0.5.3/shinydashboard.js"&gt;&lt;/script&gt;<span class="Apple-converted-space">  </span>&lt;title&gt;&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 style="color:#3c8dbc"&gt;Scenario Testing Dashboard - By Ryan Tillis&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;strong&gt;Statements&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h4&gt;Plenty of Room for Additional Projects...&amp;lt;http://www.ryantillis.com/&amp;gt;&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/title&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body class="skin-blue" style="min-height: 611px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="main-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="logo"&gt;My Business Dash&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;nav class="navbar navbar-static-top" role="navigation"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="fa fa-bars"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="navbar-custom-menu"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;ul class="nav navbar-nav"&gt;&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;aside class="main-sidebar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="sidebar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul class="sidebar-menu"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#shiny-tab-dashboard" data-toggle="tab" data-value="dashboard"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span&gt;Project One&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#shiny-tab-plots" data-toggle="tab" data-value="plots"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span&gt;Project Two&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="shiny-html-output col-sm-12" id="irr"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="shiny-html-output col-sm-12" id="NPV"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="shiny-html-output col-sm-12" id="NPVo"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/aside&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="content-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div role="tabpanel" class="tab-pane" id="shiny-tab-dashboard"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 style="color:#3c8dbc"&gt;Scenario Testing Dashboard - By Ryan Tillis&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="tabbable"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="nav nav-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li class="active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-6051-1" data-toggle="tab" data-value="&amp;lt;h4 style=&amp;quot;color:green&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Startup&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h4 style="color:green"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Startup&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-6051-2" data-toggle="tab" data-value="&amp;lt;h4 style=&amp;quot;color:#cccc00&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Operation&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h4 style="color:#cccc00"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Operation&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-6051-3" data-toggle="tab" data-value="&amp;lt;h4 style=&amp;quot;color:red&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Shutdown&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h4 style="color:red"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Shutdown&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-6051-4" data-toggle="tab" data-value="&amp;lt;h4 style=&amp;quot;color:grey&amp;quot;&amp;gt;Taxes &amp;amp;amp; Rates&amp;lt;/h4&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h4 style="color:grey"&gt;Taxes &amp;amp; Rates&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane active" data-value="&amp;lt;h4 style=&amp;quot;color:green&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Startup&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;" id="tab-6051-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3 style="color:green"&gt;Startup Phase&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B5"&gt;PPE - Inital Investment ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B5" type="number" class="form-control" value="70000"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B6"&gt;PPE - Residual Value ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B6" type="number" class="form-control" value="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B7"&gt;PPE - Useful Life (years)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B7" type="number" class="form-control" value="7" min="1"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B9"&gt;R&amp;amp;D - Startup Phase [yearly] ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B9" type="number" class="form-control" value="20000"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="box-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;div id="plot1" class="shiny-plot-output" style="width: 100% ; height: 400px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane" data-value="&amp;lt;h4 style=&amp;quot;color:#cccc00&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Operation&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;" id="tab-6051-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3 style="color:#cccc00"&gt;Operating Phase - Sales&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B12"&gt;Inital Sales Volume (units)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B12" type="number" class="form-control" value="2000"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B13"&gt;Annual Growth (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B13" data-min="0" data-max="100" data-from="0" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B15"&gt;Sales Price Per Unit ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B15" type="number" class="form-control" value="100" min="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B16"&gt;Gross margin (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B16" data-min="0" data-max="100" data-from="55" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B17"&gt;Inflation Rate (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B17" data-min="0" data-max="100" data-from="0" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B19"&gt;SG &amp;amp; A - Fixed ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B19" type="number" class="form-control" value="25000" min="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B20"&gt;SG &amp;amp; A - Variable ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B20" type="number" class="form-control" value="15" min="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3 style="color:#cccc00"&gt;Working Capital - Timing Issues&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B24"&gt;Collections in Year of Sale (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B24" data-min="0" data-max="100" data-from="90" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B25"&gt;Collections Following Year (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B25" data-min="0" data-max="100" data-from="10" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B27"&gt;Units of Inventory as Percent yearly sales&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B27" data-min="0" data-max="10" data-from="100" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="10" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B30"&gt;Percent Suppliers Paid This Year (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B30" data-min="0" data-max="100" data-from="95" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B31"&gt;Percent Suppliers Paid next year (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B31" data-min="0" data-max="100" data-from="5" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B33"&gt;Percent Employees Paid This Year (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B33" data-min="0" data-max="100" data-from="70" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B34"&gt;Percent Employees Paid next year (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B34" data-min="0" data-max="100" data-from="30" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane" data-value="&amp;lt;h4 style=&amp;quot;color:red&amp;quot;&amp;gt;&amp;#10;<span class="Apple-converted-space">  </span>&amp;lt;strong&amp;gt;Shutdown&amp;lt;/strong&amp;gt;&amp;#10;&amp;lt;/h4&amp;gt;" id="tab-6051-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3 style="color:red"&gt;Termination/Project Shutdown&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B37"&gt;PPE - Proceeds from Disposal of PPE&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B37" type="number" class="form-control" value="5000" min="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="B38"&gt;Disposal or Cleanup costs&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="B38" type="number" class="form-control" value="2000" min="0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B40"&gt;Fixed SG&amp;amp;A&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B40" data-min="0" data-max="100" data-from="0" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B41"&gt;Variable SG&amp;amp;A&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B41" data-min="0" data-max="100" data-from="0" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane" data-value="&amp;lt;h4 style=&amp;quot;color:grey&amp;quot;&amp;gt;Taxes &amp;amp;amp; Rates&amp;lt;/h4&amp;gt;" id="tab-6051-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-sm-10"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3&gt;Taxes and Rates&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B2"&gt;Discount Rate (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B2" data-min="0" data-max="100" data-from="6" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="control-label" for="B3"&gt;Tax Rate (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input class="js-range-slider" id="B3" data-min="0" data-max="100" data-from="40" data-step="1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h5&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;<span class="Apple-converted-space">  </span>Yearly Depreciation&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/h5&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="col-sm-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="E44"&gt;1&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="E44" data-min="0" data-max="1" data-from="0.29" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="F44"&gt;2&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="F44" data-min="0" data-max="1" data-from="0.2" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="G44"&gt;3&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="G44" data-min="0" data-max="1" data-from="0.15" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="H44"&gt;4&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="H44" data-min="0" data-max="1" data-from="0.1" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div class="col-sm-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="I44"&gt;5&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="I44" data-min="0" data-max="1" data-from="0.08" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="J44"&gt;6&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="J44" data-min="0" data-max="1" data-from="0.06" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="K44"&gt;7&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="K44" data-min="0" data-max="1" data-from="0.05" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="form-group shiny-input-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;label class="control-label" for="L44"&gt;8&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;input class="js-range-slider" id="L44" data-min="0" data-max="1" data-from="0" data-step="0.01" data-grid="true" data-grid-num="10" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;strong&gt;Statements&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="tabbable"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="nav nav-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li class="active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-9924-1" data-toggle="tab" data-value="&amp;lt;strong&amp;gt;Cash Flow Statement&amp;lt;/strong&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;strong&gt;Cash Flow Statement&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-9924-2" data-toggle="tab" data-value="&amp;lt;strong&amp;gt;Income Statement&amp;lt;/strong&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;strong&gt;Income Statement&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#tab-9924-3" data-toggle="tab" data-value="&amp;lt;strong&amp;gt;Balance Sheet&amp;lt;/strong&amp;gt;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;strong&gt;Balance Sheet&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane active" data-value="&amp;lt;strong&amp;gt;Cash Flow Statement&amp;lt;/strong&amp;gt;" id="tab-9924-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;Cash Flow Statement&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="cash" class="shiny-html-output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane" data-value="&amp;lt;strong&amp;gt;Income Statement&amp;lt;/strong&amp;gt;" id="tab-9924-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;Income Statement&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="income" class="shiny-html-output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="tab-pane" data-value="&amp;lt;strong&amp;gt;Balance Sheet&amp;lt;/strong&amp;gt;" id="tab-9924-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;Assets&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="balance" class="shiny-html-output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;Liabilities&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="lia" class="shiny-html-output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4&gt;Owner Equity&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="OE" class="shiny-html-output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div role="tabpanel" class="tab-pane" id="shiny-tab-plots"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h4&gt;Plenty of Room for Additional Projects...&amp;lt;http://www.ryantillis.com/&amp;gt;&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+</body>
+</html>
